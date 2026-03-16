@@ -1,1 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infografía: Modelo Conceptual · Carrito Cafetero (solo entidades gráficas)</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    body {
+      font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+      background: #f8f5f0;
+      display: flex;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    .infografia {
+      max-width: 1300px;
+      width: 100%;
+    }
+
+    /* header */
+    .header-infografia {
+      background: #3b2b1f;
+      color: white;
+      padding: 1.8rem 2rem;
+      border-radius: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 12px 20px -10px rgba(0,0,0,0.2);
+    }
+
+    .header-infografia h1 {
+      font-size: 2.4rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .header-infografia .sub {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-top: 0.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .header-infografia .sub span {
+      background: #5f4a37;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+    }
+
+    /* introducción y desarrollo resumidos */
+    .intro-desarrollo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .resumen-card {
+      background: #f2e8dd;
+      border-radius: 2rem;
+      padding: 1.8rem 2rem;
+      box-shadow: 0 10px 20px -5px #b2917b50;
+      border: 1px solid #e3cfbe;
+    }
+
+    .resumen-card h2 {
+      font-size: 1.8rem;
+      color: #362519;
+      margin-bottom: 1rem;
+      border-left: 10px solid #9f8555;
+      padding-left: 1.3rem;
+    }
+
+    .resumen-card p {
+      font-size: 1.05rem;
+      line-height: 1.5;
+      color: #2f241b;
+    }
+
+    /* grid de 6 tarjetas solo con títulos (entidades) */
+    .grid-entidades {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .entidad-card {
+      background: white;
+      border-radius: 2rem;
+      padding: 2.5rem 1rem;
+      text-align: center;
+      box-shadow: 0 12px 28px -12px #7a624b;
+      border: 2px solid #e3cfbe;
+      transition: transform 0.15s ease;
+    }
+
+    .entidad-card:hover {
+      transform: scale(1.02);
+      background: #fdfaf7;
+    }
+
+    .entidad-titulo {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #2b1e14;
+      letter-spacing: -0.01em;
+    }
+
+    .entidad-icono {
+      font-size: 3.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    /* conector de relaciones */
+    .relaciones-destacadas {
+      background: #e7d9cb;
+      border-radius: 3rem;
+      padding: 2rem 2.5rem;
+      margin: 1.5rem 0 2.5rem 0;
+      border: 2px solid #b39279;
+      text-align: center;
+    }
+
+    .relaciones-destacadas h3 {
+      font-size: 2rem;
+      color: #2f1f13;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    .relaciones-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.8rem 3rem;
+    }
+
+    .relacion-badge {
+      background: #fbf3ea;
+      padding: 0.8rem 2rem;
+      border-radius: 60px;
+      font-size: 1.2rem;
+      font-weight: 500;
+      box-shadow: 0 5px 0 #a9876b;
+      border: 1px solid #cbb295;
+    }
+
+    /* bloque imagen central */
+    .imagen-central {
+      background: #fffbf7;
+      border-radius: 2rem;
+      padding: 2rem 1.5rem 2rem 1.5rem;
+      border: 2px solid #dac1ac;
+      box-shadow: 0 15px 25px -12px #5e432c;
+      margin: 1.5rem 0 2rem 0;
+    }
+
+    .imagen-central h2 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: #37291f;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .img-placeholder {
+      width: 100%;
+      background: #ded3c7;
+      border-radius: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      border: 3px dashed #8f755c;
+    }
+
+    .img-placeholder img {
+      max-width: 100%;
+      max-height: 400px;
+      border-radius: 24px;
+      box-shadow: 0 15px 25px -8px #362c2480;
+      border: 4px solid white;
+    }
+
+    .nota-img {
+      margin-top: 1.2rem;
+      font-style: italic;
+      color: #5c4a39;
+      background: #f5ede4;
+      padding: 0.6rem 1.5rem;
+      border-radius: 60px;
+    }
+
+    /* footer conclusiones */
+    .footer-conclusion {
+      background: #2f241b;
+      color: #f2e0d1;
+      padding: 2rem 2.5rem;
+      border-radius: 2.5rem;
+      margin-top: 2rem;
+      line-height: 1.6;
+      font-size: 1.1rem;
+    }
+
+    .footer-conclusion h3 {
+      font-size: 1.8rem;
+      color: #f6d6b5;
+      margin-bottom: 1rem;
+    }
+
+    .sugerencia-badge {
+      background: #4f3f32;
+      border-radius: 30px;
+      padding: 0.6rem 1.8rem;
+      display: inline-block;
+      margin-top: 1.5rem;
+    }
+
+    hr {
+      border: 1px solid #7a624b;
+      margin: 1.5rem 0 1rem 0;
+      opacity: 0.3;
+    }
+
+    @media (max-width: 900px) {
+      .intro-desarrollo, .grid-entidades {
+        grid-template-columns: 1fr;
+      }
+      .relaciones-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="infografia">
+
+    <!-- encabezado equipo -->
+    <div class="header-infografia">
+      <h1>☕ Carrito Cafetero · Modelo Conceptual</h1>
+      <div class="sub">
+        <span>📘 Taller 1.4 · Modelado BD</span>
+        <span>👥 Los Dogs Chamos</span>
+        <span>🧑‍🏫 Hugo Espetia Huamanga</span>
+        <span>📅 2026</span>
+      </div>
+      <div style="margin-top: 0.9rem; display: flex; flex-wrap: wrap; gap: 2rem; color: #e2cfbc;">
+        <div>Andia Palomino R. · Mamani Apaza R. · Pancca Tinta S. · Ramos Hancco D.</div>
+      </div>
+    </div>
+
+    <!-- INTRODUCCIÓN + DESARROLLO resumidos (sin atributos) -->
+    <div class="intro-desarrollo">
+      <div class="resumen-card">
+        <h2>📖 Introducción (resumida)</h2>
+        <p>Las bases de datos organizan información clave en negocios. Este taller desarrolla el modelo conceptual para un <strong>carrito cafetero</strong>, identificando las entidades principales: clientes, productos, ventas, proveedores y personal. Se analizaron requerimientos y relaciones para construir el Diagrama Entidad-Relación (DER) en Lucidchart.</p>
+      </div>
+      <div class="resumen-card">
+        <h2>⚙️ Desarrollo (resumido)</h2>
+        <p>Mediante análisis de procesos (ventas, atención, abastecimiento) se definieron seis entidades: <strong>Cliente, Personal, Proveedor, Producto, Boleta, DetalleBoleta</strong>. Se establecieron sus vínculos con cardinalidades 1:N, representadas en el DER mostrado más abajo.</p>
+      </div>
+    </div>
+
+    <!-- SOLO LOS 6 DIAGRAMAS / ENTIDADES (sin pk ni atributos) -->
+    <div class="grid-entidades">
+      <div class="entidad-card">
+        <div class="entidad-icono">🙋🏻‍♂️</div>
+        <div class="entidad-titulo">Cliente</div>
+      </div>
+      <div class="entidad-card">
+        <div class="entidad-icono">👨‍🍳</div>
+        <div class="entidad-titulo">Personal</div>
+      </div>
+      <div class="entidad-card">
+        <div class="entidad-icono">📦</div>
+        <div class="entidad-titulo">Proveedor</div>
+      </div>
+      <div class="entidad-card">
+        <div class="entidad-icono">☕</div>
+        <div class="entidad-titulo">Producto</div>
+      </div>
+      <div class="entidad-card">
+        <div class="entidad-icono">🧾</div>
+        <div class="entidad-titulo">Boleta</div>
+      </div>
+      <div class="entidad-card">
+        <div class="entidad-icono">📋</div>
+        <div class="entidad-titulo">Detalle de Boleta</div>
+      </div>
+    </div>
+
+    <!-- CONEXIONES / RELACIONES (solo lectura, sin claves) -->
+    <div class="relaciones-destacadas">
+      <h3>🔗 Relaciones del negocio (cardinalidades)</h3>
+      <div class="relaciones-grid">
+        <span class="relacion-badge">Cliente 1 — N Boleta</span>
+        <span class="relacion-badge">Personal 1 — N Boleta</span>
+        <span class="relacion-badge">Boleta 1 — N Detalle</span>
+        <span class="relacion-badge">Producto 1 — N Detalle</span>
+        <span class="relacion-badge">Proveedor 1 — N Producto</span>
+      </div>
+      <p style="margin-top: 1.8rem; font-size: 1.2rem; background: #cfbcab; padding: 0.6rem 2rem; border-radius: 40px; display: inline-block;">
+        ⚡ todas las relaciones son 1:N (uno a muchos)
+      </p>
+    </div>
+
+    <!-- ESPACIO PARA EL DIAGRAMA (img_1.png) -->
+    <div class="imagen-central">
+      <h2>🎯 Diagrama Entidad–Relación (DER) · Lucidchart</h2>
+      <div class="img-placeholder">
+        <img src="img_1.png" alt="DER Carrito Cafetero - diagrama entidad relación">
+        <div class="nota-img">
+          🖼️ Imagen 1: Diagrama del negocio cafetero (entidades y relaciones)
+        </div>
+      </div>
+    </div>
+
+    <!-- CONCLUSIONES Y BIBLIOGRAFÍA (como en el PDF) -->
+    <div class="footer-conclusion">
+      <h3>📌 Conclusiones y sugerencias</h3>
+      <p>✅ El modelo conceptual permitió estructurar la información del carrito cafetero: entidades (cliente, personal, proveedor, producto, boleta, detalle) y sus relaciones 1:N. La creación del DER en Lucidchart facilitó visualizar la interacción y administración eficiente de los datos.</p>
+      <p>🔮 Como sugerencia: implementar la base de datos en un gestor (SQL Server), incorporar control de inventario, reportes automáticos y registros históricos de ventas para optimizar la gestión y toma de decisiones.</p>
+      <hr>
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;">
+        <span class="sugerencia-badge">📚 Bibliografía: Lucidchart (2026). Herramienta para diagramas ER.</span>
+        <span style="color: #dabd9f;">Universidad Andina del Cusco · Facultad de Ingeniería</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
